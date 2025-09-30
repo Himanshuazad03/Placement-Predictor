@@ -1,0 +1,318 @@
+<%- include('./partials/header') %>
+
+<main class="flex-1 pt-24 pb-20 px-6 transition-colors duration-500 bg-[#58927d] dark:bg-gray-900">
+
+  <div class="max-w-3xl mx-auto relative bg-[#e3fff5] rounded-2xl shadow-xl p-8 dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 overflow-hidden transition-transform duration-500">
+
+    <!-- Dark-mode Tint Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-purple-700/10 dark:block hidden pointer-events-none rounded-2xl"></div>
+
+    <!-- Content -->
+    <div class="relative z-10">
+      <h2 class="text-3xl font-bold text-center text-indigo-600 dark:text-white mb-6">Placement Prediction Form</h2>
+      <p class="text-center text-gray-600 dark:text-gray-200 mb-10">
+        Fill out the details to get your placement probability.
+      </p>
+
+      <form id="predictForm" novalidate class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- CGPA -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">CGPA</label>
+          <input type="number" step="0.01" name="cgpa" placeholder="e.g. 7.8" min="0" id="cgpa"
+            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          <p id="cgpaError" class="text-red-500 text-sm mt-1 hidden">⚠️ CGPA must be ≤ 10</p>
+        </div>
+
+        <!-- Internship -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Internships</label>
+          <input type="number" name="internship" placeholder="e.g. 2" min="0" id="internship"
+            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+        </div>
+
+        <!-- Paid Internship -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Paid Internship</label>
+          <input type="number" name="paid_internship" placeholder="e.g. 2" min="0" id="paid_internship"
+            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          <p id="paidError" class="text-red-500 text-sm mt-1 hidden">⚠️ Value should not exceed total Internships</p>
+        </div>
+
+        <!-- Projects -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Projects</label>
+          <input type="number" name="projects" placeholder="e.g. 4" min="0" id="projects"
+            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+        </div>
+
+        <!-- Gender -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Gender</label>
+          <select name="gender" required
+              class="w-full px-2 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male" class="text-black">Male</option>
+            <option value="Female" class="text-black">Female</option>
+          </select>
+        </div>
+
+        <!-- Aptitude Score -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Aptitude Score</label>
+          <input type="number" step="0.1" name="aptitude_score" placeholder="e.g. 7.5" min="0" id="aptitude_score"
+            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          <p id="aptitudeError" class="text-red-500 text-sm mt-1 hidden">⚠️ Aptitude Score must be ≤ 100</p>
+        </div>
+
+        <!-- Skills Rating -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Skills Rating</label>
+          <input type="number" step="0.1" name="skill_rating" placeholder="e.g. 7.5" min="0" id="skill_rating"
+            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          <p id="skillError" class="text-red-500 text-sm mt-1 hidden">⚠️ Skill Rating must be ≤ 10</p>
+        </div>
+
+        <!-- SSC Marks -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">SSC Marks</label>
+          <input type="number" step="0.1" name="ssc_marks" placeholder="e.g. 85" min="0" id="ssc_marks"
+            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          <p id="sscError" class="text-red-500 text-sm mt-1 hidden">⚠️ SSC Marks must be ≤ 100</p>
+        </div>
+
+        <!-- Placement training -->
+        <div>
+          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Placement Training</label>
+          <select name="Training" required
+              class="w-full px-2 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            <option value="" disabled selected>Training Status</option>
+            <option value="Attended">Attended</option>
+            <option value="Not Attended">Not Attended</option>
+          </select>
+        </div>
+      </form>
+
+      <!-- Submit Button -->
+      <div class="mt-10 flex justify-center">
+        <button type="submit" form="predictForm" id="predictBtn"
+          class="px-8 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-xl shadow-lg transition">
+          Predict Placement
+        </button>
+      </div>
+
+      <!-- Result Box -->
+      <div id="resultBox" class="max-w-3xl mx-auto mt-8 hidden bg-[#cffafb] dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 shadow-xl rounded-2xl p-6 text-center transition-colors duration-500">
+        <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-300 mb-2">Prediction Result</h3>
+        <p id="resultText" class="text-gray-700 dark:text-gray-200 mb-4"></p>
+        <div class="w-full bg-white dark:bg-white/20 rounded-full h-4 overflow-hidden">
+          <div id="progressBar" class="h-6 rounded-full bg-indigo-500 w-0 transition-all duration-700"></div>
+        </div>
+        <div id="adviceBox" class="mt-6 text-left text-gray-700 dark:text-gray-200 hidden">
+          <p class="text-xl font-bold">Tips:</p>
+          <ul id="adviceList" class="list-disc ml-6"></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+
+<%- include('./partials/footer') %>
+
+<script>
+const form = document.getElementById("predictForm");
+const button = document.getElementById("predictBtn");
+
+// Inputs
+const cgpa = document.getElementById("cgpa");
+const internship = document.getElementById("internship");
+const paid_internship = document.getElementById("paid_internship");
+const aptitude_score = document.getElementById("aptitude_score");
+const skill_rating = document.getElementById("skill_rating");
+const projects = document.getElementById("projects")
+const ssc_marks = document.getElementById("ssc_marks");
+
+// Error messages
+const cgpaError = document.getElementById("cgpaError");
+const paidError = document.getElementById("paidError");
+const aptitudeError = document.getElementById("aptitudeError");
+const skillError = document.getElementById("skillError");
+const sscError = document.getElementById("sscError");
+
+// Helper functions for validations
+function validateCGPA() {
+  const value = parseFloat(cgpa.value) || 0;
+  cgpaError.classList.toggle("hidden", value <= 10);
+}
+
+function validatePaidInternship() {
+  const internshipVal = parseInt(internship.value) || 0;
+  const paidVal = parseInt(paid_internship.value) || 0;
+  paidError.classList.toggle("hidden", paidVal <= internshipVal);
+}
+
+function validateAptitude() {
+  const value = parseFloat(aptitude_score.value) || 0;
+  aptitudeError.classList.toggle("hidden", value <= 100);
+}
+
+function validateSkill() {
+  const value = parseFloat(skill_rating.value) || 0;
+  skillError.classList.toggle("hidden", value <= 10);
+}
+
+function validateSSC() {
+  const value = parseFloat(ssc_marks.value) || 0;
+  sscError.classList.toggle("hidden", value <= 100);
+}
+
+// Dynamic validations on input
+cgpa.addEventListener("input", validateCGPA);
+aptitude_score.addEventListener("input", validateAptitude);
+skill_rating.addEventListener("input", validateSkill);
+ssc_marks.addEventListener("input", validateSSC);
+
+internship.addEventListener("input", () => {
+  const internshipVal = parseInt(internship.value) || 0;
+
+  // Auto-zero Paid Internship if Internship = 0
+  if (internshipVal === 0) {
+    paid_internship.value = 0;
+    paid_internship.readOnly = true;
+    paidError.classList.add("hidden");
+  } else {
+    paid_internship.readOnly = false;
+  }
+  validatePaidInternship();
+});
+
+paid_internship.addEventListener("input", validatePaidInternship);
+
+// Submit button validation
+button.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  // Check empty fields
+  for (let key in data) {
+    if (!data[key] || data[key].trim() === "") {
+      alert("⚠️ Please fill all the values");
+      return;
+    }
+  }
+
+  // Parse numeric fields only
+  data.cgpa = parseFloat(data.cgpa);
+  data.internship = parseInt(data.internship);
+  data.paid_internship = parseInt(data.paid_internship);
+  data.aptitude_score = parseFloat(data.aptitude_score);
+  data.skill_rating = parseFloat(data.skill_rating);
+  data.projects = parseFloat(data.projects);
+  data.ssc_marks = parseFloat(data.ssc_marks);
+
+  // Gender stays as string
+  if (!data.gender) {
+    alert("⚠️ Please select your gender");
+    return;
+  }
+
+  if (!data.Training) {
+    alert("⚠️ Please select your Placement Status");
+    return;
+  }
+
+  // Reset errors
+  [cgpaError, paidError, aptitudeError, skillError, sscError].forEach(el => el.classList.add("hidden"));
+
+  // Final validation
+  let hasError = false;
+  if (data.cgpa > 10) { cgpaError.classList.remove("hidden"); hasError = true; }
+  if (data.aptitude_score > 100) { aptitudeError.classList.remove("hidden"); hasError = true; }
+  if (data.skill_rating > 10) { skillError.classList.remove("hidden"); hasError = true; }
+  if (data.ssc_marks > 100) { sscError.classList.remove("hidden"); hasError = true; }
+  if (data.paid_internship > data.internship) { paidError.classList.remove("hidden"); hasError = true; }
+
+  if (hasError) return;
+
+  // Call backend if all validations pass
+  try {
+    const res = await fetch("/predict", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    const probability = parseFloat(result.probability);
+
+    // Show result box
+    const resultBox = document.getElementById("resultBox");
+    const resultText = document.getElementById("resultText");
+    const progressBar = document.getElementById("progressBar");
+    const adviceBox = document.getElementById("adviceBox");
+    const adviceList = document.getElementById("adviceList");
+
+    resultBox.classList.remove("hidden");
+    resultText.textContent = `Your placement probability is: ${probability}%`;
+
+    let colorClass = "bg-green-500";
+    let borderColor = "#22c55e";
+    if (probability < 40) { colorClass = "bg-red-500"; borderColor = "#ef4444"; }
+    else if (probability < 70) { colorClass = "bg-yellow-500"; borderColor = "#eab308"; }
+
+    progressBar.className = `h-4 rounded-full ${colorClass} w-0 transition-all duration-700`;
+    setTimeout(() => progressBar.style.width = `${probability}%`, 100);
+
+    resultBox.style.transition = "outline 0.5s ease";
+    resultBox.style.outline = `4px solid ${borderColor}`;
+    setTimeout(() => resultBox.style.outline = "none", 1000);
+
+    // Advice tips
+    adviceList.innerHTML = "";
+    let tips = [];
+    if (probability < 40) {
+      tips = [
+        "Improve your CGPA by focusing on core subjects.",
+        "Take more internships to gain practical experience.",
+        "Work on personal and academic projects.",
+        "Enhance aptitude and problem-solving skills."
+      ];
+    } else if (probability < 70) {
+      tips = [
+        "Increase skill ratings by learning new technologies.",
+        "Attend relevant workshops and certifications.",
+        "Work on additional projects for practical exposure.",
+        "Maintain consistency in internships and academics."
+      ];
+    } else {
+      tips = [
+        "Keep up your current performance.",
+        "Continue attending workshops to strengthen skills.",
+        "Focus on networking and real-world experience.",
+        "Maintain balance between academics and extra-curriculars."
+      ];
+    }
+
+    tips.forEach(tip => {
+      const li = document.createElement("li");
+      li.textContent = tip;
+      adviceList.appendChild(li);
+    });
+
+    adviceBox.classList.remove("hidden");
+    resultBox.scrollIntoView({ behavior: "smooth" });
+
+  } catch (err) {
+    console.error(err);
+    const resultBox = document.getElementById("resultBox");
+    const resultText = document.getElementById("resultText");
+    const adviceBox = document.getElementById("adviceBox");
+    resultText.textContent = "Prediction failed. Try again.";
+    resultBox.classList.remove("hidden");
+    adviceBox.classList.add("hidden");
+  }
+});
+</script>

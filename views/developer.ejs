@@ -1,0 +1,112 @@
+<%- include('./partials/header') %>
+
+<!-- Developer Section -->
+<section class="py-20 px-6 transition-colors duration-500 
+    bg-gradient-to-r from-emerald-100 via-green-200 to-teal-100
+    dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-black">
+
+  <div class="max-w-6xl mx-auto text-center">
+    <!-- Heading -->
+    <h2 class="relative font-extrabold 
+           bg-gradient-to-r from-green-800 via-emerald-700 to-teal-600 
+           inline-block text-transparent bg-clip-text 
+           dark:bg-none dark:text-white
+           mb-12 mt-10 text-4xl
+           after:content-[''] after:block after:w-40 after:h-1 after:bg-indigo-600 
+           after:mt-4 after:mx-auto after:rounded-full dark:after:bg-blue-600">
+      Meet the Developers
+    </h2>
+
+    <!-- Developer Cards Wrapper -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <!-- Developer 1 -->
+      <div class="relative rounded-2xl shadow-2xl p-8 flex flex-col items-center
+           bg-white/80 dark:bg-white/10 backdrop-blur-xl dark:border border-white/20
+           transition-transform transform hover:scale-105 duration-300 overflow-hidden">
+        <!-- Gradient Overlay for light mode -->
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-200/40 to-teal-300/40 dark:hidden pointer-events-none rounded-2xl"></div>
+        <!-- Gradient Overlay for dark mode -->
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none rounded-2xl"></div>
+
+        <div class="relative z-10 flex flex-col items-center">
+          <img src="/images/dev1.jpg" alt="Developer 1"
+               class="w-32 h-32 object-cover rounded-full mb-4 shadow-xl ring-2 ring-gray-300 dark:ring-gray-500 object-top">
+          <h3 class="text-2xl font-bold text-emerald-700 dark:text-gray-100">Himanshu Azad</h3>
+          <p class="text-gray-700 dark:text-gray-300">Full Stack Developer</p>
+          <p class="text-gray-700 dark:text-gray-300 font-semibold">Computer Science & Design</p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-400 max-w-sm">
+            Passionate about AI, Web Development, and solving real-world problems with technology.
+          </p>
+          <div class="mt-5 flex gap-6">
+            <a href="https://github.com/Himanshuazad03" target="_blank"
+               class="text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-white transition">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/himanshu-azad-5a97a3310/" target="_blank"
+               class="text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-white transition">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a href="mailto:23cd10hi32@mitsgwl.ac.in"
+               class="text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-white transition">
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Developer 2 -->
+      <div class="relative rounded-2xl shadow-2xl p-8 flex flex-col items-center
+           bg-white/80 dark:bg-white/10 backdrop-blur-xl dark:border border-white/20
+           transition-transform transform hover:scale-105 duration-300 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-200/40 to-teal-300/40 dark:hidden pointer-events-none rounded-2xl"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none rounded-2xl"></div>
+        
+        <div class="relative z-10 flex flex-col items-center">
+          <img src="/images/dev2.jpg" alt="Developer 2"
+               class="w-32 h-32 object-cover rounded-full mb-4 shadow-xl ring-2 ring-gray-300 dark:ring-gray-500 object-top">
+          <h3 class="text-2xl font-bold text-emerald-700 dark:text-gray-100">Animesh Porwal</h3>
+          <p class="text-gray-700 dark:text-gray-300">ML Enthusiast | Data Scientist</p>
+          <p class="text-gray-700 dark:text-gray-300 font-semibold">Computer Science & Design</p>
+          <p class="mt-3 text-sm text-gray-600 dark:text-gray-400 max-w-sm">
+            Focused on APIs, data-driven solutions, and optimizing ML models for production use.
+          </p>
+          <div class="mt-5 flex gap-6">
+            <a href="https://github.com/anni0955" target="_blank"
+               class="text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-white transition">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/animesh-porwal-94a969304/" target="_blank"
+               class="text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-white transition">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a href="mailto:animeshporwal0955@gmail.com"
+               class="text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-white transition">
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teacher Section -->
+    <div class="relative mt-20 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center justify-center gap-8 
+         bg-white/80 dark:bg-white/10 backdrop-blur-xl dark:border border-white/20 overflow-hidden transition-transform transform hover:scale-105 duration-300">
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-400 via-emerald-200 to-teal-100 dark:hidden pointer-events-none rounded-2xl"></div>
+      <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-gray-800 via-gray-700 to-black pointer-events-none rounded-2xl"></div>
+
+      <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+        <img src="/images/coordinator.png" alt="Teacher"
+             class="w-32 h-32 object-cover rounded-full shadow-xl object-bottom ring-2 ring-gray-300 dark:ring-gray-500">
+        <div class="text-center md:text-left">
+          <h3 class="text-2xl font-bold text-indigo-600 dark:text-white mb-2">Under the Guidance of</h3>
+          <p class="text-gray-900 dark:text-gray-100 font-semibold">Dr. Dheeraj Kumar Dixit</p>
+          <p class="text-gray-700 dark:text-gray-300 font-medium">Assistant Professor</p>
+          <p class="text-gray-700 dark:text-gray-300">Department of Computer Science</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('./partials/footer') %>
