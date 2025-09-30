@@ -1,0 +1,168 @@
+<%- include('./partials/header') %>
+
+<div class="min-h-screen flex flex-col justify-between transition-colors duration-500 
+    bg-gradient-to-br from-emerald-100 via-green-200 to-teal-100 
+    dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-black">
+
+  <!-- Centered Login Card -->
+  <div class="flex-1 flex items-center justify-center mt-20">
+    <div class="relative w-full max-w-md rounded-2xl shadow-2xl p-8 
+                bg-white/80 dark:bg-white/10 backdrop-blur-xl 
+                border border-emerald-200 dark:border-white/20 overflow-hidden transition-transform duration-500">
+
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-200/40 to-teal-300/40 
+                  dark:from-gray-900 dark:via-gray-700 dark:to-black pointer-events-none rounded-2xl"></div>
+
+      <!-- Content -->
+      <div class="relative z-10">
+        <h1 class="text-3xl font-extrabold text-emerald-700 dark:text-white mb-2 text-center drop-shadow">
+          Welcome Back
+        </h1>
+        <p class="text-sm text-gray-700 dark:text-gray-200 text-center mb-6">
+          Log in to continue
+        </p>
+
+        <form id="loginForm" class="space-y-4" novalidate>
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+              Enter Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              autocomplete="username"
+              class="w-full rounded-xl border border-emerald-200 dark:border-white/20 px-3 py-2
+                     focus:ring-2 focus:ring-emerald-400 outline-none transition-colors duration-300
+                     bg-white/70 dark:bg-white/10 text-gray-800 dark:text-gray-200 backdrop-blur-md"
+              placeholder="you@example.com"
+            />
+            <p id="errorEmail" class="hidden text-sm text-red-500 mt-1"></p>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+              Enter Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              class="w-full rounded-xl border border-emerald-200 dark:border-white/20 px-3 py-2
+                     focus:ring-2 focus:ring-emerald-400 outline-none transition-colors duration-300
+                     bg-white/70 dark:bg-white/10 text-gray-800 dark:text-gray-200 backdrop-blur-md"
+              placeholder="Enter password"
+            />
+            <p id="errorPassword" class="hidden text-sm text-red-500 mt-1"></p>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="mt-4 w-full rounded-xl 
+                   bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 
+                  dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700
+                  text-white font-semibold rounded-xl shadow-lg py-2.5
+                   shadow-lg active:scale-95">
+            Log in
+          </button>
+        </form>
+
+        <p class="text-sm text-center text-gray-600 dark:text-gray-200 mt-4">
+          Don’t have an account?
+          <a href="/signup" class="text-emerald-700 dark:text-white font-medium hover:underline">
+            Sign up
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="w-full">
+    <%- include('./partials/footer') %>
+  </div>
+</div>
+
+
+<script>
+  const form = document.getElementById("loginForm");
+  const emailInput = document.getElementById("email");
+  const passInput = document.getElementById("password");
+  const errorEmail = document.getElementById("errorEmail");
+  const errorPass = document.getElementById("errorPassword");
+
+  const setError = (input, errorEl, msg) => {
+    input.classList.remove("border-zinc-200", "dark:border-white/20");
+    input.classList.add("border-red-400", "focus:border-red-400");
+    errorEl.textContent = msg;
+    errorEl.classList.remove("hidden");
+  };
+
+  const clearError = (input, errorEl) => {
+    input.classList.remove("border-red-400", "focus:border-red-400");
+    input.classList.add("border-zinc-200", "dark:border-white/20");
+    errorEl.classList.add("hidden");
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const emailVal = emailInput.value.trim();
+    const passVal = passInput.value.trim();
+
+    let valid = true;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailVal) {
+      setError(emailInput, errorEmail, "Enter your email");
+      valid = false;
+    } else if (!emailRegex.test(emailVal)) {
+      setError(emailInput, errorEmail, "Invalid email");
+      valid = false;
+    } else {
+      clearError(emailInput, errorEmail);
+    }
+
+    if (!passVal) {
+      setError(passInput, errorPass, "Password cannot be empty");
+      valid = false;
+    } else if (passVal.length < 6) {
+      setError(passInput, errorPass, "Password must be at least 6 characters");
+      valid = false;
+    } else {
+      clearError(passInput, errorPass);
+    }
+
+    if (!valid) return;
+
+    try {
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailVal, password: passVal }),
+        credentials: "include"
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        if (data.errorField === "email") {
+          setError(emailInput, errorEmail, data.error);
+        } else if (data.errorField === "password") {
+          setError(passInput, errorPass, data.error);
+        }
+        return;
+      }
+
+      window.location.assign("/skill");
+    } catch {
+      alert("Server error. Please try again.");
+    }
+  });
+
+  emailInput.addEventListener("input", () => clearError(emailInput, errorEmail));
+  passInput.addEventListener("input", () => clearError(passInput, errorPass));
+</script>

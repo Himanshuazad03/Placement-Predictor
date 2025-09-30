@@ -1,0 +1,206 @@
+<%- include('./partials/header') %>
+
+<!-- Skill Rating Page -->
+<main class="flex-1 pt-24 pb-20 px-6 transition-colors duration-500 
+    bg-gradient-to-r from-emerald-100 via-green-200 to-teal-100 
+    dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-black">
+
+  <div class="max-w-3xl mx-auto relative bg-white/80 rounded-2xl shadow-2xl p-8 
+       dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 overflow-hidden transition-transform duration-500">
+
+    <!-- Gradient Overlay for Light Mode -->
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-200/40 to-teal-300/40 dark:hidden pointer-events-none rounded-2xl"></div>
+    <!-- Dark-mode Tint Overlay -->
+    <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none rounded-2xl"></div>
+
+    <!-- Content -->
+    <div class="relative z-10">
+      <h2 class="text-3xl font-bold text-center text-emerald-700 dark:text-white mb-6">Skill Rating Form</h2>
+      <p class="text-center text-gray-700 dark:text-gray-200 mb-10">
+        Select your skills and fill in your contest performance.
+      </p>
+
+      <!-- Form -->
+      <form id="skillForm" action="/skills" method="POST" class="grid grid-cols-1 gap-6">
+        <!-- Skills (Checkboxes) -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">Technical Skills</label>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="C_Cpp" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">C / C++</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="Java" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">Java</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="Python" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">Python</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="HTML_CSS" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">HTML / CSS</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="UI_UX" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">UI / UX</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="Javascript" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">JavaScript</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="Numpy_Pandas" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">Numpy / Pandas</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="Scikit_learn" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">Scikit-learn</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="MERN" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">MERN Stack</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="Linux" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">Linux</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="Cloud_Platforms" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">Cloud Platforms</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="checkbox" name="skills" value="App_development" class="h-5 w-5 text-emerald-500 dark:text-indigo-400">
+              <span class="text-gray-700 dark:text-gray-200">App Development</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Contest Performance -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">No. of Contests Attempted</label>
+            <input type="number" name="Number_of_Contest_attempted" placeholder="e.g. 15"
+              class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-emerald-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">LeetCode Contest Rating</label>
+            <input type="number" name="LC_Contest_rating" placeholder="e.g. 1500"
+              class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-emerald-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">LeetCode Medium Problems Solved</label>
+            <input type="number" name="Leetcode_Medium_problems" placeholder="e.g. 120"
+              class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-emerald-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+          </div>
+        </div>
+      </form>
+
+      <!-- Submit Button -->
+      <div class="mt-10 flex justify-center">
+        <button type="submit" form="skillForm"
+          class="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 
+                  dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700
+                  text-white font-semibold rounded-xl shadow-lg py-2.5 ">
+          Submit Skills
+        </button>
+      </div>
+
+      <!-- Result Box -->
+      <div id="resultBox" class="max-w-3xl mx-auto mt-8 hidden bg-[#cffafb] dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 shadow-2xl rounded-2xl p-6 text-center transition-colors duration-500">
+          <h3 class="text-2xl font-bold text-emerald-700 dark:text-indigo-300 mb-2">Skill Rating Result</h3>
+          <p id="resultText" class="text-gray-700 dark:text-gray-200 mb-4"></p>
+          <p class="text-xl font-bold text-left dark:text-gray-200">Tips:</p>
+          <ul id="adviceList" class="text-left text-gray-700 dark:text-gray-200 list-disc pl-5 mb-10"></ul>
+          <a href="/predict" class="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-lg dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700
+                  text-white font-semibold rounded-xl shadow-lg py-2.5">
+            Predict your placement
+          </a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<%- include('./partials/footer') %>
+
+
+<script>
+
+  // Existing skill form logic
+  const skillForm = document.getElementById("skillForm");
+  const resultBox = document.getElementById("resultBox");
+  const resultText = document.getElementById("resultText");
+  const adviceList = document.getElementById("adviceList");
+
+  skillForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(skillForm);
+    const data = Object.fromEntries(formData.entries());
+
+    for (let key in data) {
+      if (data[key].trim() === "") {
+        alert("⚠️ Please fill all the values");
+        return;
+      }
+      data[key] = Math.max(0, parseFloat(data[key]));
+    }
+
+    if (data.skills && !Array.isArray(data.skills)) data.skills = [data.skills];
+    else if (!data.skills) data.skills = [];
+
+    try {
+      const res = await fetch("/skill-predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const rating = await res.text();
+      const ratingNum = parseFloat(rating);
+
+      resultBox.classList.remove("hidden");
+      resultText.textContent = `Your Skill Rating: ${ratingNum} / 10`;
+
+      let advice = [];
+      if (ratingNum < 4) {
+        advice = [
+          "Focus on learning high-demand skills like Python, MERN, or Scikit-learn.",
+          "Participate in more coding contests to improve problem-solving.",
+          "Try solving more medium/hard problems on platforms like LeetCode.",
+          "Consider online courses to strengthen weak areas."
+        ];
+      } else if (ratingNum < 7) {
+        advice = [
+          "Enhance your high-value skills to stand out.",
+          "Take part in hackathons or group projects.",
+          "Solve more challenging coding problems regularly.",
+          "Work on real projects to showcase your skills."
+        ];
+      } else {
+        advice = [
+          "You have strong skills! Keep practicing to maintain your edge.",
+          "Contribute to open-source projects.",
+          "Mentor others or write blogs to demonstrate expertise.",
+          "Focus on advanced topics in your main tech stack."
+        ];
+      }
+
+      adviceList.innerHTML = "";
+      advice.forEach(point => {
+        const li = document.createElement("li");
+        li.textContent = point;
+        adviceList.appendChild(li);
+      });
+
+      resultBox.scrollIntoView({ behavior: "smooth" });
+    } catch (err) {
+      console.error(err);
+      resultText.textContent = "Prediction failed. Try again.";
+      adviceList.innerHTML = "";
+      resultBox.classList.remove("hidden");
+    }
+  });
+</script>
