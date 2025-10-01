@@ -1,55 +1,60 @@
 <%- include('./partials/header') %>
 
-<main class="flex-1 pt-24 pb-20 px-6 transition-colors duration-500 bg-[#58927d] dark:bg-gray-900">
+<main class="flex-1 pt-24 pb-20 px-6 transition-colors duration-500 
+    bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 
+    dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-black">
 
-  <div class="max-w-3xl mx-auto relative bg-[#e3fff5] rounded-2xl shadow-xl p-8 dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 overflow-hidden transition-transform duration-500">
+  <div class="max-w-3xl mx-auto relative bg-white/80 rounded-2xl shadow-2xl p-8 
+       dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 overflow-hidden transition-transform duration-500">
 
+    <!-- Gradient Overlay for Light Mode -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none rounded-2xl"></div>
     <!-- Dark-mode Tint Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-purple-700/10 dark:block hidden pointer-events-none rounded-2xl"></div>
+    <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none rounded-2xl"></div>
 
     <!-- Content -->
     <div class="relative z-10">
-      <h2 class="text-3xl font-bold text-center text-indigo-600 dark:text-white mb-6">Placement Prediction Form</h2>
-      <p class="text-center text-gray-600 dark:text-gray-200 mb-10">
+      <h2 class="text-3xl font-bold text-center text-blue-700 dark:text-white mb-6">Placement Prediction Form</h2>
+      <p class="text-center text-gray-700 dark:text-gray-200 mb-10">
         Fill out the details to get your placement probability.
       </p>
 
       <form id="predictForm" novalidate class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- CGPA -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">CGPA</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">CGPA</label>
           <input type="number" step="0.01" name="cgpa" placeholder="e.g. 7.8" min="0" id="cgpa"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
           <p id="cgpaError" class="text-red-500 text-sm mt-1 hidden">⚠️ CGPA must be ≤ 10</p>
         </div>
 
         <!-- Internship -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Internships</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Internships</label>
           <input type="number" name="internship" placeholder="e.g. 2" min="0" id="internship"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
         </div>
 
         <!-- Paid Internship -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Paid Internship</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Paid Internship</label>
           <input type="number" name="paid_internship" placeholder="e.g. 2" min="0" id="paid_internship"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
           <p id="paidError" class="text-red-500 text-sm mt-1 hidden">⚠️ Value should not exceed total Internships</p>
         </div>
 
         <!-- Projects -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Projects</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Projects</label>
           <input type="number" name="projects" placeholder="e.g. 4" min="0" id="projects"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
         </div>
 
         <!-- Gender -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Gender</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Gender</label>
           <select name="gender" required
-              class="w-full px-2 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+              class="w-full px-2 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
             <option value="" disabled selected>Select Gender</option>
             <option value="Male" class="text-black">Male</option>
             <option value="Female" class="text-black">Female</option>
@@ -58,33 +63,33 @@
 
         <!-- Aptitude Score -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Aptitude Score</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Aptitude Score</label>
           <input type="number" step="0.1" name="aptitude_score" placeholder="e.g. 7.5" min="0" id="aptitude_score"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
           <p id="aptitudeError" class="text-red-500 text-sm mt-1 hidden">⚠️ Aptitude Score must be ≤ 100</p>
         </div>
 
         <!-- Skills Rating -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Skills Rating</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Skills Rating</label>
           <input type="number" step="0.1" name="skill_rating" placeholder="e.g. 7.5" min="0" id="skill_rating"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
           <p id="skillError" class="text-red-500 text-sm mt-1 hidden">⚠️ Skill Rating must be ≤ 10</p>
         </div>
 
         <!-- SSC Marks -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">SSC Marks</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">SSC Marks</label>
           <input type="number" step="0.1" name="ssc_marks" placeholder="e.g. 85" min="0" id="ssc_marks"
-            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
           <p id="sscError" class="text-red-500 text-sm mt-1 hidden">⚠️ SSC Marks must be ≤ 100</p>
         </div>
 
-        <!-- Placement training -->
+        <!-- Placement Training -->
         <div>
-          <label class="block text-sm font-medium text-gray-600 dark:text-gray-200 mb-1">Placement Training</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Placement Training</label>
           <select name="Training" required
-              class="w-full px-2 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+              class="w-full px-2 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
             <option value="" disabled selected>Training Status</option>
             <option value="Attended" class="text-black">Attended</option>
             <option value="Not Attended" class="text-black">Not Attended</option>
@@ -95,17 +100,19 @@
       <!-- Submit Button -->
       <div class="mt-10 flex justify-center">
         <button type="submit" form="predictForm" id="predictBtn"
-          class="px-8 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-xl shadow-lg transition">
+          class="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 
+                  dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700
+                  text-white font-semibold rounded-xl shadow-lg py-2.5 ">
           Predict Placement
         </button>
       </div>
 
       <!-- Result Box -->
-      <div id="resultBox" class="max-w-3xl mx-auto mt-8 hidden bg-[#cffafb] dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 shadow-xl rounded-2xl p-6 text-center transition-colors duration-500">
-        <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-300 mb-2">Prediction Result</h3>
+      <div id="resultBox" class="max-w-3xl mx-auto mt-8 hidden bg-[#dbeafe] dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 shadow-2xl rounded-2xl p-6 text-center transition-colors duration-500">
+        <h3 class="text-2xl font-bold text-blue-700 dark:text-indigo-300 mb-2">Prediction Result</h3>
         <p id="resultText" class="text-gray-700 dark:text-gray-200 mb-4"></p>
         <div class="w-full bg-white dark:bg-white/20 rounded-full h-4 overflow-hidden">
-          <div id="progressBar" class="h-6 rounded-full bg-indigo-500 w-0 transition-all duration-700"></div>
+          <div id="progressBar" class="h-6 rounded-full bg-blue-500 w-0 transition-all duration-700"></div>
         </div>
         <div id="adviceBox" class="mt-6 text-left text-gray-700 dark:text-gray-200 hidden">
           <p class="text-xl font-bold">Tips:</p>
@@ -116,6 +123,7 @@
     </div>
   </div>
 </main>
+
 
 
 <%- include('./partials/footer') %>
@@ -256,7 +264,7 @@ button.addEventListener("click", async (e) => {
     const adviceList = document.getElementById("adviceList");
 
     resultBox.classList.remove("hidden");
-    resultText.textContent = `Your placement probability is: ${probability}%`;
+    resultText.innerHTML = `Your placement probability is: <strong>${probability}%</strong>`;
 
     let colorClass = "bg-green-500";
     let borderColor = "#22c55e";

@@ -5,7 +5,7 @@ const config = require('config')
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const expressSession = require("express-session");
-const {registerUser, loginUser, logoutUser} = require("./controllers/authcontroller")
+const {registerUser, loginUser} = require("./controllers/authcontroller")
 const isAuthenticated = require('./Middleware/isAuthenticated')
 const cookieParser = require('cookie-parser');
 const isLoggedin = require('./Middleware/isLoggedin')
@@ -50,7 +50,7 @@ app.get("/", (req,res)=>{
     // Already logged in, redirect to predict page
     return res.redirect("/skill");
   }
-    res.render("login", {currentPage : "login", user: req.user});
+    res.render("home", {currentPage : "home", user: req.user});
 })
 
 app.get("/skill", isLoggedin, (req,res)=>{

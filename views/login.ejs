@@ -1,22 +1,22 @@
 <%- include('./partials/header') %>
 
 <div class="min-h-screen flex flex-col justify-between transition-colors duration-500 
-    bg-gradient-to-br from-emerald-100 via-green-200 to-teal-100 
+    bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 
     dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-black">
 
   <!-- Centered Login Card -->
-  <div class="flex-1 flex items-center justify-center mt-20">
+  <div class="flex-1 flex items-center justify-center mt-20 px-4 sm:px-6">
     <div class="relative w-full max-w-md rounded-2xl shadow-2xl p-8 
                 bg-white/80 dark:bg-white/10 backdrop-blur-xl 
-                border border-emerald-200 dark:border-white/20 overflow-hidden transition-transform duration-500">
+                border border-blue-200 dark:border-white/20 overflow-hidden transition-transform duration-500">
 
       <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-br from-emerald-200/40 to-teal-300/40 
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 
                   dark:from-gray-900 dark:via-gray-700 dark:to-black pointer-events-none rounded-2xl"></div>
 
       <!-- Content -->
       <div class="relative z-10">
-        <h1 class="text-3xl font-extrabold text-emerald-700 dark:text-white mb-2 text-center drop-shadow">
+        <h1 class="text-3xl font-extrabold text-blue-700 dark:text-white mb-2 text-center drop-shadow">
           Welcome Back
         </h1>
         <p class="text-sm text-gray-700 dark:text-gray-200 text-center mb-6">
@@ -34,8 +34,8 @@
               name="email"
               type="text"
               autocomplete="username"
-              class="w-full rounded-xl border border-emerald-200 dark:border-white/20 px-3 py-2
-                     focus:ring-2 focus:ring-emerald-400 dark:ring-indigo-500 outline-none transition-colors duration-300
+              class="w-full rounded-xl border border-blue-200 dark:border-white/20 px-3 py-2
+                     focus:ring-2 focus:ring-blue-400 dark:ring-indigo-500 outline-none transition-colors duration-300
                      bg-white/70 dark:bg-white/10 text-gray-800 dark:text-gray-200 backdrop-blur-md"
               placeholder="you@example.com"
             />
@@ -52,8 +52,8 @@
               name="password"
               type="password"
               autocomplete="current-password"
-              class="w-full rounded-xl border border-emerald-200 dark:border-white/20 px-3 py-2
-                     focus:ring-2 focus:ring-emerald-400 dark:ring-indigo-500 outline-none transition-colors duration-300
+              class="w-full rounded-xl border border-blue-200 dark:border-white/20 px-3 py-2
+                     focus:ring-2 focus:ring-blue-400 dark:ring-indigo-500 outline-none transition-colors duration-300
                      bg-white/70 dark:bg-white/10 text-gray-800 dark:text-gray-200 backdrop-blur-md"
               placeholder="Enter password"
             />
@@ -64,7 +64,7 @@
           <button
             type="submit"
             class="mt-4 w-full rounded-xl 
-                   bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 
+                   bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 
                   dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700
                   text-white font-semibold rounded-xl shadow-lg py-2.5
                    shadow-lg active:scale-95">
@@ -74,7 +74,7 @@
 
         <p class="text-sm text-center text-gray-600 dark:text-gray-200 mt-4">
           Don’t have an account?
-          <a href="/signup" class="text-emerald-700 dark:text-white font-medium hover:underline">
+          <a href="/signup" class="text-blue-700 dark:text-white font-medium hover:underline">
             Sign up
           </a>
         </p>
@@ -87,6 +87,7 @@
     <%- include('./partials/footer') %>
   </div>
 </div>
+
 
 
 <script>
