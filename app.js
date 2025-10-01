@@ -128,4 +128,12 @@ app.get("/logout", (req,res)=>{
   res.redirect("/login")
 })
 
+app.get("/privacy", (req,res)=>{
+  res.render("privacy", {currentPage: "privacy", user: req.user});
+})
+
+app.get("/terms", (req,res)=>{
+  res.render("terms", {currentPage: "terms", user: req.user});
+})
+
 app.listen(3000);

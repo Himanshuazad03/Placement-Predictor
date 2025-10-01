@@ -1,0 +1,68 @@
+<%- include('./partials/header') %>
+
+<main class="flex-1 pt-24 pb-20 px-6 transition-colors duration-500 
+    bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 
+    dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-black">
+
+  <!-- Privacy Policy Section -->
+  <section class="max-w-5xl mx-auto px-6">
+    <div class="relative rounded-2xl shadow-2xl p-8 
+                bg-white/80 dark:bg-white/10 backdrop-blur-xl 
+                border border-blue-200 dark:border-white/20 overflow-hidden transition-transform duration-500">
+
+      <!-- Gradient Overlay for Light Mode -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none rounded-2xl"></div>
+      <!-- Dark-mode Tint Overlay -->
+      <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none rounded-2xl"></div>
+
+      <div class="relative z-10">
+        <h1 class="text-4xl font-extrabold text-black dark:text-white mb-6 text-center drop-shadow">
+          Privacy Policy
+        </h1>
+        <p class="text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
+          At the <span class="font-semibold text-black dark:text-indigo-300">MITS Placement Predictor Portal</span>, 
+          we value and respect your privacy. This Privacy Policy outlines how we collect, use, and safeguard your data.
+        </p>
+
+        <h2 class="text-2xl font-bold text-black dark:text-indigo-300 mt-6 mb-3">1. Information We Collect</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          We collect personal details such as name, email address, academic records (CGPA, SSC marks, etc.), and 
+          self-assessed skill data. This information is used solely for generating skill ratings and placement predictions.
+        </p>
+
+        <h2 class="text-2xl font-bold text-black dark:text-indigo-300 mt-6 mb-3">2. How We Use Your Information</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          The data provided by you is used to:
+        </p>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 mt-2 space-y-1">
+          <li>Generate personalized skill ratings and placement predictions.</li>
+          <li>Provide insights to students and faculty for career preparation.</li>
+          <li>Improve the accuracy of our machine learning models.</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-black dark:text-indigo-300 mt-6 mb-3">3. Data Security</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          We implement strict security protocols to protect your information from unauthorized access, modification, or misuse. 
+          Your data is encrypted and stored securely.
+        </p>
+
+        <h2 class="text-2xl font-bold text-black dark:text-indigo-300 mt-6 mb-3">4. Data Sharing</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          We do not share or sell your personal data to third parties. Your data is used exclusively for academic and 
+          placement-related predictions at MITS.
+        </p>
+
+        <h2 class="text-2xl font-bold text-black dark:text-indigo-300 mt-6 mb-3">5. Your Consent</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          By using this portal, you consent to the collection and use of your information as described in this Privacy Policy.
+        </p>
+
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-6 text-center">
+          If you have questions about this Privacy Policy, please contact the MITS administration.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('./partials/footer') %>
