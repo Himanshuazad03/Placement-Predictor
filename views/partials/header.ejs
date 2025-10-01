@@ -29,17 +29,19 @@
 
   <!-- Header -->
   <!-- Header -->
-<header class="bg-[#fafffd] dark:bg-[#1a2233] shadow-md fixed top-0 left-0 w-full z-50 border-b border-indigo-400 dark:border-gray-700 transition-colors duration-500">
+<header class="bg-gradient-to-r from-blue-100 via-blue-200 to-blue-200 
+               dark:bg-gradient-to-r dark:from-[#1a2233] dark:to-[#1a2233] 
+               shadow-md fixed top-0 left-0 w-full z-50 border-b border-blue-400 dark:border-gray-700 transition-colors duration-500">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-20">
-    
+
     <!-- Logo + Title -->
     <div class="flex items-center">
-      <img src="/images/mits-logo.png" class="h-14 w-14 object-contain" alt="MITS Logo">
+      <img src="/images/mits-logo.png" class="h-14 w-14 object-contain drop-shadow-md" alt="MITS Logo">
       <div class="flex flex-col justify-center items-center ml-4">
-        <h2 class="text-blue-800 dark:text-gray-200 text-sm font-semibold whitespace-nowrap">
+        <h2 class="text-blue-900 dark:text-gray-200 text-sm font-semibold whitespace-nowrap drop-shadow-sm">
           माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर
         </h2>
-        <h3 class="text-blue-800 dark:text-gray-200 text-xs font-medium whitespace-nowrap">
+        <h3 class="text-blue-900 dark:text-gray-200 text-xs font-medium whitespace-nowrap">
           Madhav Institute of Technology & Science, Gwalior
         </h3>
         <p class="text-red-600 dark:text-red-400 text-xs font-medium mt-1 whitespace-nowrap">
@@ -48,55 +50,56 @@
       </div>
     </div>
 
+    <!-- Hamburger for mobile -->
+    <div class="md:hidden flex items-center">
+      <button id="menuToggle" class="text-gray-800 dark:text-gray-200 focus:outline-none">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+
     <!-- Navigation -->
-    <nav class="hidden md:flex items-center gap-6 text-gray-700 dark:text-gray-200 font-medium">
-      
+    <nav id="navMenu" class="hidden md:flex items-center gap-6 text-gray-800 dark:text-gray-200 font-medium">
       <!-- Home -->
-      <a href="/home"
-         class="relative pb-1 transition-colors duration-300 <%= currentPage === 'home' ? 'text-emerald-600 dark:text-indigo-400 after:w-full' : 'hover:text-emerald-600 dark:hover:text-indigo-400' %>
-                after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-emerald-600 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">
-         Home
-      </a>
+      <a href="/home" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'home' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">Home</a>
 
       <!-- Skill Rating -->
       <% if (user) { %>
-      <a href="/skill"
-         class="relative pb-1 transition-colors duration-300 <%= currentPage === 'skill' ? 'text-emerald-600 dark:text-indigo-400 after:w-full' : 'hover:text-emerald-600 dark:hover:text-indigo-400' %>
-                after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-emerald-600 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">
-         Skill Rating
-      </a>
+      <a href="/skill" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'skill' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">Skill Rating</a>
       <% } %>
 
       <!-- Developer -->
-      <a href="/developer"
-         class="relative pb-1 transition-colors duration-300 <%= currentPage === 'developer' ? 'text-emerald-600 dark:text-indigo-400 after:w-full' : 'hover:text-emerald-600 dark:hover:text-indigo-400' %>
-                after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-emerald-600 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">
-         Developer
-      </a>
+      <a href="/developer" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'developer' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">Developer</a>
 
       <% if (user) { %>
-        <!-- Logout -->
-        <a href="/logout"
-           class="relative pb-1 hover:text-emerald-600 dark:hover:text-indigo-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-emerald-600 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">
-           Logout
-        </a>
+        <a href="/logout" class="relative pb-1 hover:text-blue-700 dark:hover:text-indigo-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">Logout</a>
       <% } else { %>
-        <!-- Login -->
-        <a href="/login"
-           class="relative pb-1 transition-colors duration-300 <%= currentPage === 'login' ? 'text-emerald-600 dark:text-indigo-400 after:w-full' : 'hover:text-emerald-600 dark:hover:text-indigo-400' %>
-                  after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-emerald-600 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">
-           Login
-        </a>
+        <a href="/login" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'login' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full">Login</a>
       <% } %>
 
       <!-- Theme Toggle -->
-      <button id="themeToggle" 
-              class="ml-4 rounded-full bg-indigo-500 w-[40px] h-[40px] flex justify-center items-center hover:bg-indigo-600 
-                     dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white shadow transition relative">
+      <button id="themeToggle" class="ml-4 rounded-full bg-blue-500 w-[40px] h-[40px] flex justify-center items-center hover:bg-blue-600 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white shadow-md transition relative">
         <i id="sunIcon" class="fa-solid fa-sun text-xl hidden dark:inline-block"></i>
         <i id="moonIcon" class="fa-solid fa-moon text-xl inline-block dark:hidden"></i>
       </button>
     </nav>
   </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden hidden bg-blue-100 dark:bg-[#1a2233] border-t border-blue-400 dark:border-gray-700">
+    <nav class="flex flex-col px-6 py-4 gap-4 text-gray-800 dark:text-gray-200 font-medium">
+      <a href="/home" class="hover:text-blue-700 dark:hover:text-indigo-400">Home</a>
+      <% if (user) { %><a href="/skill" class="hover:text-blue-700 dark:hover:text-indigo-400">Skill Rating</a><% } %>
+      <a href="/developer" class="hover:text-blue-700 dark:hover:text-indigo-400">Developer</a>
+      <% if (user) { %><a href="/logout" class="hover:text-blue-700 dark:hover:text-indigo-400">Logout</a><% } else { %><a href="/login" class="hover:text-blue-700 dark:hover:text-indigo-400">Login</a><% } %>
+    </nav>
+  </div>
 </header>
 
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
