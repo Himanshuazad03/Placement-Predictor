@@ -20,76 +20,69 @@
       </p>
 
       <form id="predictForm" novalidate class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- All your input fields here remain unchanged -->
         <!-- CGPA -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">CGPA</label>
           <input type="number" step="0.01" name="cgpa" placeholder="e.g. 7.8" min="0" id="cgpa"
-            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
           <p id="cgpaError" class="text-red-500 text-sm mt-1 hidden">⚠️ CGPA must be ≤ 10</p>
         </div>
-
         <!-- Internship -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Internships</label>
           <input type="number" name="internship" placeholder="e.g. 2" min="0" id="internship"
-            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
         </div>
-
         <!-- Paid Internship -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Paid Internship</label>
           <input type="number" name="paid_internship" placeholder="e.g. 2" min="0" id="paid_internship"
-            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
           <p id="paidError" class="text-red-500 text-sm mt-1 hidden">⚠️ Value should not exceed total Internships</p>
         </div>
-
         <!-- Projects -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Projects</label>
           <input type="number" name="projects" placeholder="e.g. 4" min="0" id="projects"
-            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
         </div>
-
         <!-- Gender -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Gender</label>
           <select name="gender" required
-              class="w-full px-2 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+              class="w-full px-2 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
             <option value="" disabled selected>Select Gender</option>
             <option value="Male" class="text-black">Male</option>
             <option value="Female" class="text-black">Female</option>
           </select>
         </div>
-
         <!-- Aptitude Score -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Aptitude Score</label>
           <input type="number" step="0.1" name="aptitude_score" placeholder="e.g. 7.5" min="0" id="aptitude_score"
-            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
           <p id="aptitudeError" class="text-red-500 text-sm mt-1 hidden">⚠️ Aptitude Score must be ≤ 100</p>
         </div>
-
         <!-- Skills Rating -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Skills Rating</label>
           <input type="number" step="0.1" name="skill_rating" placeholder="e.g. 7.5" min="0" id="skill_rating"
-            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
           <p id="skillError" class="text-red-500 text-sm mt-1 hidden">⚠️ Skill Rating must be ≤ 10</p>
         </div>
-
         <!-- SSC Marks -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">SSC Marks</label>
           <input type="number" step="0.1" name="ssc_marks" placeholder="e.g. 85" min="0" id="ssc_marks"
-            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+            class="w-full px-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
           <p id="sscError" class="text-red-500 text-sm mt-1 hidden">⚠️ SSC Marks must be ≤ 100</p>
         </div>
-
         <!-- Placement Training -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Placement Training</label>
           <select name="Training" required
-              class="w-full px-2 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20">
+              class="w-full px-2 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
             <option value="" disabled selected>Training Status</option>
             <option value="Attended" class="text-black">Attended</option>
             <option value="Not Attended" class="text-black">Not Attended</option>
@@ -107,11 +100,21 @@
         </button>
       </div>
 
-      <!-- Result Box -->
+      <!-- Result Box with Skeleton -->
       <div id="resultBox" class="max-w-3xl mx-auto mt-8 hidden bg-[#dbeafe] dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 shadow-2xl rounded-2xl p-6 text-center transition-colors duration-500">
-        <h3 class="text-2xl font-bold text-blue-700 dark:text-indigo-300 mb-2">Prediction Result</h3>
-        <p id="resultText" class="text-gray-700 dark:text-gray-200 mb-4"></p>
-        <div class="w-full bg-white dark:bg-white/20 rounded-full h-4 overflow-hidden">
+        <!-- Skeleton loader -->
+        <div id="skeleton" class="animate-pulse space-y-4 h-full w-full">
+          <div class="h-8 bg-blue-200 dark:bg-white/20 rounded-2xl w-3/4 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-1/2 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-5/6 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-2/3 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-4/6 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-4/6 mx-auto"></div>
+        </div>
+
+        <h3 id="resultTitle" class="text-2xl font-bold text-blue-700 dark:text-indigo-300 mb-2 hidden">Prediction Result</h3>
+        <p id="resultText" class="text-gray-700 dark:text-gray-200 mb-4 hidden"></p>
+        <div class="w-full bg-white dark:bg-white/20 rounded-full h-4 overflow-hidden hidden" id="progressContainer">
           <div id="progressBar" class="h-6 rounded-full bg-blue-500 w-0 transition-all duration-700"></div>
         </div>
         <div id="adviceBox" class="mt-6 text-left text-gray-700 dark:text-gray-200 hidden">
@@ -123,8 +126,6 @@
     </div>
   </div>
 </main>
-
-
 
 <%- include('./partials/footer') %>
 
@@ -245,6 +246,23 @@ button.addEventListener("click", async (e) => {
 
   if (hasError) return;
 
+  const resultBox = document.getElementById("resultBox");
+  const skeleton = document.getElementById("skeleton");
+  const resultTitle = document.getElementById("resultTitle");
+  const resultText = document.getElementById("resultText");
+  const progressContainer = document.getElementById("progressContainer");
+  const progressBar = document.getElementById("progressBar");
+  const adviceBox = document.getElementById("adviceBox");
+  const adviceList = document.getElementById("adviceList");
+
+      resultBox.classList.remove("hidden");
+      skeleton.classList.remove("hidden");
+      resultTitle.classList.add("hidden");
+      resultText.classList.add("hidden");
+      progressContainer.classList.add("hidden");
+      adviceBox.classList.add("hidden");
+
+      resultBox.scrollIntoView({ behavior: "smooth" });
   // Call backend if all validations pass
   try {
     const res = await fetch("/predict", {
@@ -254,16 +272,13 @@ button.addEventListener("click", async (e) => {
     });
 
     const result = await res.json();
-    const probability = parseFloat(result.probability);
+    const probability = parseFloat(result.probability.toFixed(1)) * 100;
 
-    // Show result box
-    const resultBox = document.getElementById("resultBox");
-    const resultText = document.getElementById("resultText");
-    const progressBar = document.getElementById("progressBar");
-    const adviceBox = document.getElementById("adviceBox");
-    const adviceList = document.getElementById("adviceList");
-
-    resultBox.classList.remove("hidden");
+    skeleton.classList.add("hidden");
+    resultTitle.classList.remove("hidden");
+    resultText.classList.remove("hidden");
+    progressContainer.classList.remove("hidden");
+     
     resultText.innerHTML = `Your placement probability is: <strong>${probability}%</strong>`;
 
     let colorClass = "bg-green-500";
@@ -311,7 +326,8 @@ button.addEventListener("click", async (e) => {
     });
 
     adviceBox.classList.remove("hidden");
-    resultBox.scrollIntoView({ behavior: "smooth" });
+   
+
 
   } catch (err) {
     console.error(err);

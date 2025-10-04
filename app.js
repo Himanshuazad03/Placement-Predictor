@@ -10,6 +10,7 @@ const isAuthenticated = require('./Middleware/isAuthenticated')
 const cookieParser = require('cookie-parser');
 const isLoggedin = require('./Middleware/isLoggedin')
 const { spawn } = require("child_process");
+const axios = require('axios')
 
 require('dotenv').config();
 app.set("view engine", "ejs");
@@ -66,6 +67,7 @@ app.post("/predict", isLoggedin, (req, res) => {
   python.stdout.on("data", (data) => {
     output += data.toString(); // collect all stdout chunks
   });
+
 
 
   python.stderr.on("data", (err) => {
