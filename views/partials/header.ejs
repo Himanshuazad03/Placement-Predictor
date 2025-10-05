@@ -31,13 +31,13 @@
 <header class="bg-gradient-to-r from-blue-100 via-blue-200 to-blue-200 
                dark:bg-gradient-to-r dark:from-[#1a2233] dark:to-[#1a2233] 
                shadow-md fixed top-0 left-0 w-full z-50 border-b border-blue-300 dark:border-gray-700 transition-colors duration-500">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-20">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-2 sm:px-6 h-20">
 
     <!-- Logo + Title -->
     <div class="flex items-center">
       <img src="/images/mits.png" class="h-12 w-12 md:h-14 w-14 object-contain drop-shadow-md" alt="MITS Logo">
       <div class="flex flex-col justify-center items-center ml-4">
-        <h2 class="text-blue-900 dark:text-gray-200 text-sm font-semibold whitespace-nowrap drop-shadow-sm">
+        <h2 class="text-blue-900 dark:text-gray-200 text-xs md:text-sm font-semibold whitespace-nowrap drop-shadow-sm">
           माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर
         </h2>
         <h3 class="text-blue-900 dark:text-gray-200 text-xs font-medium whitespace-nowrap">
@@ -94,6 +94,7 @@
       <a href="/home" class="hover:text-blue-700 dark:hover:text-indigo-400">Home</a>
       <% if (user) { %><a href="/skill" class="hover:text-blue-700 dark:hover:text-indigo-400">Skill Rating</a><% } %>
       <a href="/developer" class="hover:text-blue-700 dark:hover:text-indigo-400">Developer</a>
+      <a href="/working" class="hover:text-blue-700 dark:hover:text-indigo-400">Model Insights</a>
       <% if (user) { %><a href="/logout" class="hover:text-blue-700 dark:hover:text-indigo-400">Logout</a><% } else { %><a href="/login" class="hover:text-blue-700 dark:hover:text-indigo-400">Login</a><% } %>
     </nav>
   </div>
