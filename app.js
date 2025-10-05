@@ -60,6 +60,7 @@ app.get("/skill", isLoggedin, (req,res)=>{
 
 app.post("/predict", isLoggedin, (req, res) => {
   const formData = req.body;
+  console.log(formData)
 
   const python = spawn("python", ["./predict.py", JSON.stringify(formData)]);
   let output = "";

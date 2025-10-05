@@ -7,9 +7,9 @@
   <div class="max-w-3xl mx-auto relative bg-white/80 rounded-2xl shadow-2xl p-8 
        dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 overflow-hidden transition-transform duration-500">
 
-    <!-- Gradient Overlay for Light Mode -->
+    <!-- Gradient Overlay Light Mode ke liye -->
     <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none rounded-2xl"></div>
-    <!-- Dark-mode Tint Overlay -->
+    <!-- Dark-mode ke liye -->
     <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none rounded-2xl"></div>
 
     <!-- Content -->
@@ -20,7 +20,6 @@
       </p>
 
       <form id="predictForm" novalidate class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- All your input fields here remain unchanged -->
         <!-- CGPA -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">CGPA</label>
@@ -81,7 +80,7 @@
         <!-- Placement Training -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Placement Training</label>
-          <select name="Training" required
+          <select name="placement_training" required
               class="w-full px-2 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 outline-none dark:bg-white/10 dark:text-gray-200 dark:border-white/20 dark:focus:ring-indigo-500">
             <option value="" disabled selected>Training Status</option>
             <option value="Attended" class="text-black">Attended</option>
@@ -149,7 +148,7 @@ const aptitudeError = document.getElementById("aptitudeError");
 const skillError = document.getElementById("skillError");
 const sscError = document.getElementById("sscError");
 
-// Helper functions for validations
+// Helper functions validations ke liye
 function validateCGPA() {
   const value = parseFloat(cgpa.value) || 0;
   cgpaError.classList.toggle("hidden", value <= 10);
@@ -176,7 +175,7 @@ function validateSSC() {
   sscError.classList.toggle("hidden", value <= 100);
 }
 
-// Dynamic validations on input
+// Dynamic validations input per
 cgpa.addEventListener("input", validateCGPA);
 aptitude_score.addEventListener("input", validateAptitude);
 skill_rating.addEventListener("input", validateSkill);
@@ -185,7 +184,7 @@ ssc_marks.addEventListener("input", validateSSC);
 internship.addEventListener("input", () => {
   const internshipVal = parseInt(internship.value) || 0;
 
-  // Auto-zero Paid Internship if Internship = 0
+  // Auto-zero Paid Internship agar internship zero hai
   if (internshipVal === 0) {
     paid_internship.value = 0;
     paid_internship.readOnly = true;
@@ -228,7 +227,7 @@ button.addEventListener("click", async (e) => {
     return;
   }
 
-  if (!data.Training) {
+  if (!data.placement_training) {
     alert("⚠️ Please select your Placement Status");
     return;
   }
@@ -263,7 +262,7 @@ button.addEventListener("click", async (e) => {
       adviceBox.classList.add("hidden");
 
       resultBox.scrollIntoView({ behavior: "smooth" });
-  // Call backend if all validations pass
+  // backend pe data send karenge pass ho jaye toh
   try {
     const res = await fetch("/predict", {
       method: "POST",
