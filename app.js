@@ -135,6 +135,10 @@ app.get("/privacy", (req,res)=>{
   res.render("privacy", {currentPage: "privacy", user: req.user});
 })
 
+app.get("/working", (req,res)=>{
+  res.render("working", {currentPage: "working", user: req.user});
+})
+
 app.get("/terms", (req,res)=>{
   res.render("terms", {currentPage: "terms", user: req.user});
 })
