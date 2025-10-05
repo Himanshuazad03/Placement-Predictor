@@ -1,0 +1,357 @@
+<%- include('./partials/header') %>
+
+<main class="flex-1 pt-24 pb-20 px-6 transition-colors duration-500 
+    bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 
+    dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-black">
+
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Hero Section -->
+    <div class="relative bg-white/80 rounded-2xl shadow-2xl p-8 mb-8
+         dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 overflow-hidden">
+      
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none rounded-2xl"></div>
+      <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none rounded-2xl"></div>
+      
+      <div class="relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-blue-700 dark:text-white mb-4">
+          Model Training Insights
+        </h1>
+        <p class="text-lg text-gray-700 dark:text-gray-200 max-w-3xl mx-auto">
+          Explore how our machine learning model analyzes student data to predict placement outcomes. 
+          Each visualization reveals key patterns and relationships in the training dataset.
+        </p>
+      </div>
+    </div>
+
+    <!-- Analysis Cards Grid -->
+    <div class="space-y-8">
+
+      <!-- Card 1: Placement Training Impact -->
+      <div class="relative bg-white/80 rounded-2xl shadow-2xl overflow-hidden
+           dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 
+           transform hover:scale-[1.02] transition-all duration-500">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-700 dark:text-indigo-300 mb-4">
+                Impact of Placement Training
+              </h2>
+              <p class="text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
+                Students who attended placement training show significantly higher placement rates. 
+                The data reveals that training attendance is one of the strongest predictors of successful placement.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">📈</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    <strong>82.7%</strong> placement rate for students who attended training
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">📉</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    <strong>35.3%</strong> placement rate for students who didn't attend
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🎯</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Training attendance increases placement probability by approximately <strong>2.3x</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="order-1 md:order-2 bg-white/60 dark:bg-white/5 rounded-xl p-4 shadow-lg">
+              <img src="/images/placement_training.png" alt="Placement Training Analysis" 
+                   class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: CGPA & Aptitude Correlation -->
+      <div class="relative bg-white/80 rounded-2xl shadow-2xl overflow-hidden
+           dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 
+           transform hover:scale-[1.02] transition-all duration-500">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="bg-white/60 dark:bg-white/5 rounded-xl p-4 shadow-lg">
+              <img src="/images/cgpa_aptitude.png" alt="CGPA vs Aptitude Score" 
+                   class="w-full h-auto rounded-lg shadow-md">
+            </div>
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-700 dark:text-indigo-300 mb-4">
+                Academic Excellence Correlation
+              </h2>
+              <p class="text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
+                A strong positive correlation exists between CGPA and Aptitude Scores. Students with higher 
+                academic performance tend to score better in aptitude tests, creating a compounding advantage.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🎓</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Students with <strong>CGPA > 8.5</strong> typically score above <strong>70</strong> in aptitude
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🔍</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Clear clustering shows placed students (blue) concentrate in the upper-right quadrant
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">💡</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Both metrics are critical - high performance in either alone doesn't guarantee placement
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Skills vs CGPA -->
+      <div class="relative bg-white/80 rounded-2xl shadow-2xl overflow-hidden
+           dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 
+           transform hover:scale-[1.02] transition-all duration-500">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-700 dark:text-indigo-300 mb-4">
+                Skills Rating vs Academic Performance
+              </h2>
+              <p class="text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
+                While CGPA measures academic knowledge, Skills Rating captures practical abilities. 
+                The model identifies students who excel in both dimensions as having the highest placement probability.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">⚖️</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Moderate correlation suggests skills and academics measure different competencies
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🌟</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Students with <strong>Skills > 7</strong> and <strong>CGPA > 8</strong> have 90%+ placement rates
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🔧</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Lower skills ratings show more placement failures even with decent CGPA
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="order-1 md:order-2 bg-white/60 dark:bg-white/5 rounded-xl p-4 shadow-lg">
+              <img src="/images/skills_cgpa.png" alt="Skills Rating vs CGPA" 
+                   class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Gender Distribution -->
+      <div class="relative bg-white/80 rounded-2xl shadow-2xl overflow-hidden
+           dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 
+           transform hover:scale-[1.02] transition-all duration-500">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="bg-white/60 dark:bg-white/5 rounded-xl p-4 shadow-lg">
+              <img src="/images/gender_distribution.png" alt="Gender Distribution" 
+                   class="w-full h-auto rounded-lg shadow-md">
+            </div>
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-700 dark:text-indigo-300 mb-4">
+                Gender-Based Placement Patterns
+              </h2>
+              <p class="text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
+                The dataset reveals placement outcomes across gender demographics. The model uses this feature 
+                to understand historical patterns while predicting individual outcomes.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">👥</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Male students: <strong>62.1%</strong> placement rate (2,332 placed out of 3,754)
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">👥</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Female students: <strong>78.5%</strong> placement rate (990 placed out of 1,261)
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">📊</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    Gender is included as a feature but combined with other factors for fair prediction
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Internship Impact -->
+      <div class="relative bg-white/80 rounded-2xl shadow-2xl overflow-hidden
+           dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 
+           transform hover:scale-[1.02] transition-all duration-500">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+              <h2 class="text-2xl md:text-3xl font-bold text-blue-700 dark:text-indigo-300 mb-4">
+                Internship Experience Advantage
+              </h2>
+              <p class="text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
+                Practical experience through internships significantly boosts placement chances. The model 
+                recognizes that each additional internship increases a student's marketability.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🚀</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    <strong>0 internships:</strong> 60.9% placement rate
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🎯</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    <strong>1 internship:</strong> 70.8% placement rate
+                  </p>
+                </div>
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">⭐</span>
+                  <p class="text-gray-700 dark:text-gray-200">
+                    <strong>2 internships:</strong> 77.4% placement rate - demonstrating clear progression
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="order-1 md:order-2 bg-white/60 dark:bg-white/5 rounded-xl p-4 shadow-lg">
+              <img src="/images/internship_impact.png" alt="Internship Impact" 
+                   class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Distribution Analysis -->
+      <div class="relative bg-white/80 rounded-2xl shadow-2xl overflow-hidden
+           dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 
+           transform hover:scale-[1.02] transition-all duration-500">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-blue-700 dark:text-indigo-300 mb-6 text-center">
+            Feature Distribution Analysis
+          </h2>
+          <div class="bg-white/60 dark:bg-white/5 rounded-xl p-4 shadow-lg mb-6">
+            <img src="/images/distribution_analysis.png" alt="Feature Distributions" 
+                 class="w-full h-auto rounded-lg shadow-md">
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-3">
+              <h3 class="text-xl font-bold text-blue-600 dark:text-indigo-300">Aptitude Score Distribution</h3>
+              <div class="flex items-start">
+                <span class="text-2xl mr-3">📊</span>
+                <p class="text-gray-700 dark:text-gray-200">
+                  Normal distribution centered around <strong>70-75</strong>, showing most students score in this range
+                </p>
+              </div>
+              <div class="flex items-start">
+                <span class="text-2xl mr-3">🎯</span>
+                <p class="text-gray-700 dark:text-gray-200">
+                  Scores above <strong>80</strong> correlate strongly with placement success
+                </p>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <h3 class="text-xl font-bold text-blue-600 dark:text-indigo-300">SSC Marks Distribution</h3>
+              <div class="flex items-start">
+                <span class="text-2xl mr-3">📈</span>
+                <p class="text-gray-700 dark:text-gray-200">
+                  Bimodal distribution with peaks around <strong>65-70</strong> and <strong>75-80</strong>
+                </p>
+              </div>
+              <div class="flex items-start">
+                <span class="text-2xl mr-3">🔍</span>
+                <p class="text-gray-700 dark:text-gray-200">
+                  Early academic foundation shows lasting impact on placement outcomes
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How Model Works Section -->
+      <div class="relative bg-white/80 rounded-2xl shadow-2xl overflow-hidden
+           dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-indigo-300/40 dark:hidden pointer-events-none"></div>
+        <div class="absolute inset-0 hidden dark:block bg-gradient-to-br from-indigo-600/10 to-purple-700/10 pointer-events-none"></div>
+        
+        <div class="relative z-10 p-6 md:p-8">
+          <h2 class="text-3xl md:text-4xl font-bold text-blue-700 dark:text-indigo-300 mb-6 text-center">
+            How the Model Makes Predictions
+          </h2>
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="bg-blue-50/80 dark:bg-white/5 rounded-xl p-6 shadow-lg border-2 border-blue-200 dark:border-indigo-500/30">
+              <div class="text-4xl mb-4 text-center">🔢</div>
+              <h3 class="text-xl font-bold text-blue-700 dark:text-indigo-300 mb-3 text-center">Data Analysis</h3>
+              <p class="text-gray-700 dark:text-gray-200 text-center">
+                The model analyzes patterns from over 5,000 historical student records to identify success factors
+              </p>
+            </div>
+            <div class="bg-blue-50/80 dark:bg-white/5 rounded-xl p-6 shadow-lg border-2 border-blue-200 dark:border-indigo-500/30">
+              <div class="text-4xl mb-4 text-center">🧠</div>
+              <h3 class="text-xl font-bold text-blue-700 dark:text-indigo-300 mb-3 text-center">Pattern Recognition</h3>
+              <p class="text-gray-700 dark:text-gray-200 text-center">
+                Machine learning algorithms identify complex relationships between features that humans might miss
+              </p>
+            </div>
+            <div class="bg-blue-50/80 dark:bg-white/5 rounded-xl p-6 shadow-lg border-2 border-blue-200 dark:border-indigo-500/30">
+              <div class="text-4xl mb-4 text-center">🎯</div>
+              <h3 class="text-xl font-bold text-blue-700 dark:text-indigo-300 mb-3 text-center">Probability Calculation</h3>
+              <p class="text-gray-700 dark:text-gray-200 text-center">
+                Your input is compared against learned patterns to generate a personalized placement probability
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<%- include('./partials/footer') %>
