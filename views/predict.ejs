@@ -112,11 +112,11 @@
         </div>
 
         <h3 id="resultTitle" class="text-2xl font-bold text-blue-700 dark:text-indigo-300 mb-2 hidden">Prediction Result</h3>
-        <p id="resultText" class="text-gray-700 dark:text-gray-200 mb-4 hidden"></p>
+        <p id="resultText" class="text-gray-700 dark:text-white mb-4 hidden"></p>
         <div class="w-full bg-white dark:bg-white/20 rounded-full h-4 overflow-hidden hidden" id="progressContainer">
           <div id="progressBar" class="h-6 rounded-full bg-blue-500 w-0 transition-all duration-700"></div>
         </div>
-        <div id="adviceBox" class="mt-6 text-left text-gray-700 dark:text-gray-200 hidden">
+        <div id="adviceBox" class="mt-6 text-left text-gray-700 dark:text-white hidden">
           <p class="text-xl font-bold">Tips:</p>
           <ul id="adviceList" class="list-disc ml-6"></ul>
         </div>
@@ -269,16 +269,17 @@ button.addEventListener("click", async (e) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
-
     const result = await res.json();
-    const probability = parseFloat(result.probability.toFixed(1)) * 100;
+    const number = Number(result.probability)
+    const probability = parseFloat(number*100);
+    const final_prob = probability.toFixed(1);
 
     skeleton.classList.add("hidden");
     resultTitle.classList.remove("hidden");
     resultText.classList.remove("hidden");
     progressContainer.classList.remove("hidden");
      
-    resultText.innerHTML = `Your placement probability is: <strong>${probability}%</strong>`;
+    resultText.innerHTML = `Your placement probability is: <strong>${final_prob}%</strong>`;
 
     let colorClass = "bg-green-500";
     let borderColor = "#22c55e";

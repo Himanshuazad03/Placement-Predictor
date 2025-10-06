@@ -12,3 +12,25 @@
   transition: outline 0.1s ease-in-out;
   
 }
+
+@media (min-width: 900px) {
+    #menuToggle {
+      display: none; 
+    }
+    #navMenu {
+      display: flex ; 
+    }
+    #mobileMenu {
+      display: none ; 
+    }
+  }
+
+  /* Show hamburger and hide nav below 900px */
+  @media (max-width: 900px) {
+    #menuToggle {
+      display: flex; 
+    }
+    #navMenu {
+      display: none ; 
+    }
+  }
