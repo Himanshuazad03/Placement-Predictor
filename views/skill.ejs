@@ -21,7 +21,7 @@
       </p>
 
       <!-- Form -->
-      <form id="skillForm" action="/skills" method="POST" class="grid grid-cols-1 gap-6">
+      <form id="skillForm" novalidate class="grid grid-cols-1 gap-6">
         <!-- Skills (Checkboxes) -->
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">Technical Skills</label>
@@ -108,15 +108,31 @@
       </div>
 
       <!-- Result Box -->
-      <div id="resultBox" class="max-w-3xl mx-auto mt-8 hidden bg-[#dbeafe] dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 shadow-2xl rounded-2xl p-6 text-center transition-colors duration-500">
-          <h3 class="text-3xl font-bold text-blue-700 dark:text-indigo-300 mb-2">Skill Rating Result</h3>
-          <p id="resultText" class="text-gray-700 dark:text-gray-200 mb-4 text-xl"></p>
-          <p class="text-xl font-bold text-left dark:text-gray-200">Tips:</p>
-          <ul id="adviceList" class="text-left text-gray-700 dark:text-gray-200 list-disc pl-5 mb-10"></ul>
-          <a href="/predict" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold rounded-xl shadow-lg dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700">
+     <div id="resultBox" class="max-w-3xl mx-auto mt-8 hidden bg-[#dbeafe] dark:bg-white/10 dark:backdrop-blur-xl dark:border dark:border-white/20 shadow-2xl rounded-2xl p-6 text-center transition-colors duration-500">
+        <!-- Skeleton loader -->
+        <div id="skeleton" class="animate-pulse space-y-4 h-full w-full">
+          <div class="h-8 bg-blue-200 dark:bg-white/20 rounded-2xl w-3/4 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-1/2 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-5/6 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-2/3 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-4/6 mx-auto"></div>
+          <div class="h-4 bg-blue-200 dark:bg-white/20 rounded-2xl w-4/6 mx-auto"></div>
+        </div>
+
+        <h3 id="resultTitle" class="text-2xl font-bold text-blue-700 dark:text-indigo-300 mb-2 hidden">Prediction Result</h3>
+        <p id="resultText" class="text-gray-700 dark:text-white mb-4 hidden"></p>
+        <div class="w-full bg-white dark:bg-white/20 rounded-full h-4 overflow-hidden hidden" id="progressContainer">
+          <div id="progressBar" class="h-6 rounded-full bg-blue-500 w-0 transition-all duration-700"></div>
+        </div>
+        <div id="adviceBox" class="mt-6 text-left text-gray-700 dark:text-white hidden">
+          <p class="text-xl font-bold">Tips:</p>
+          <ul id="adviceList" class="list-disc ml-6 mb-6"></ul>
+        </div>
+         <a href="/predict" id="predict_btn" class="px-8 hidden py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold rounded-xl shadow-lg dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700">
             Predict your placement
           </a>
       </div>
+
 
     </div>
   </div>
@@ -131,25 +147,50 @@
   // Existing skill form logic
   const skillForm = document.getElementById("skillForm");
   const resultBox = document.getElementById("resultBox");
+  const skeleton = document.getElementById("skeleton");
+  const resultTitle = document.getElementById("resultTitle");
   const resultText = document.getElementById("resultText");
+  const adviceBox = document.getElementById("adviceBox");
   const adviceList = document.getElementById("adviceList");
+  const predict_btn = document.getElementById("predict_btn")
 
   skillForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const checkedSkills = Array.from(
+    document.querySelectorAll('input[name="skills"]:checked')
+   ).map(el => el.value);
+
     const formData = new FormData(skillForm);
     const data = Object.fromEntries(formData.entries());
 
-    for (let key in data) {
-      if (data[key].trim() === "") {
-        alert("⚠️ Please fill all the values");
-        return;
-      }
-      data[key] = Math.max(0, parseFloat(data[key]));
-    }
+    data.skills = checkedSkills;
 
-    if (data.skills && !Array.isArray(data.skills)) data.skills = [data.skills];
-    else if (!data.skills) data.skills = [];
+    for (let key in data) {
+      if (key === "skills") {
+        // Special check for empty skills array
+        if (!data.skills || data.skills.length === 0) {
+          alert("⚠️ Please select at least one skill");
+          return;
+        }
+      } else {
+        // Check for empty string values
+        if (data[key].trim() === "") {
+          alert("⚠️ Please fill all the values");
+          return;
+        }
+        data[key] = Math.max(0, parseFloat(data[key]));
+      }
+    }
+       
+    
+      resultBox.classList.remove("hidden");
+      skeleton.classList.remove("hidden");
+      resultTitle.classList.add("hidden");
+      resultText.classList.add("hidden");
+      adviceBox.classList.add("hidden");
+
+      resultBox.scrollIntoView({ behavior: "smooth" });
 
     try {
       const res = await fetch("/skill-predict", {
@@ -157,22 +198,29 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
+      
+      
+      skeleton.classList.add("hidden");
+      resultTitle.classList.remove("hidden");
+      resultText.classList.remove("hidden");
+      adviceBox.classList.remove("hidden");
+      predict_btn.classList.remove("hidden")
 
-      const rating = await res.text();
-      const ratingNum = parseFloat(rating);
+      const rating = await res.json();
+      const ratingNum = parseFloat(rating.probability);
+      const result = ratingNum.toFixed(2);
 
-      resultBox.classList.remove("hidden");
-      resultText.textContent = `Your Skill Rating: ${ratingNum} / 10`;
+      resultText.textContent = `Your Skill Rating: ${result} / 10`;
 
       let advice = [];
-      if (ratingNum < 4) {
+      if (result < 4) {
         advice = [
           "Focus on learning high-demand skills like Python, MERN, or Scikit-learn.",
           "Participate in more coding contests to improve problem-solving.",
           "Try solving more medium/hard problems on platforms like LeetCode.",
           "Consider online courses to strengthen weak areas."
         ];
-      } else if (ratingNum < 7) {
+      } else if (result < 7) {
         advice = [
           "Enhance your high-value skills to stand out.",
           "Take part in hackathons or group projects.",

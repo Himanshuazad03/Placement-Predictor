@@ -4,29 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Placement Predictor</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
+<link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    crossorigin="anonymous" 
+  />  
+  
   <script>
-  (function() {
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      if (!theme) localStorage.setItem('theme', 'light');
-    }
-  })();
-</script>
-
-  <script>
-    tailwind.config = {
-    darkMode: 'class',
-    }
+    // Dark mode on page load
+    (function() {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        if (!theme) localStorage.setItem('theme', 'light');
+      }
+    })();
   </script>
 
-
-  <link rel="stylesheet" href="/stylesheet/style.css">
+   <link href="/styles/output.css" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex flex-col">
 
@@ -39,7 +36,7 @@
     <!-- Logo + Title -->
     <div class="flex items-center">
       <img src="/images/mits.png" class="h-12 w-12 md:h-14 w-14 object-contain drop-shadow-md" alt="MITS Logo">
-      <div class="flex flex-col justify-center items-center ml-4">
+      <div class="flex flex-col justify-center items-center ml-2 md:ml-4">
         <h2 class="text-blue-900 dark:text-gray-200 text-[12px] sm:text-xs md:text-sm font-semibold whitespace-nowrap drop-shadow-sm">
           माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर
         </h2>
@@ -52,43 +49,46 @@
       </div>
     </div>
 
-    <!-- Hamburger mobile ke liye -->
-    <div class="flex items-center">
-      <button id="menuToggle" class="text-gray-800 dark:text-gray-200 focus:outline-none">
-        <i class="fa-solid fa-bars text-2xl"></i>
+    <div class="flex items-center justify-center gap-2 lg:gap-4">
+      <!-- Hamburger mobile ke liye -->
+        <div class="flex items-center">
+            <button id="menuToggle" class="text-gray-800 dark:text-gray-200 focus:outline-none">
+              <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+              <i id="cross" class="fa-solid fa-xmark hidden text-2xl"></i>
+            </button>
+        </div>
+        <!-- Navigation -->
+        <nav id="navMenu" class="flex items-center gap-4 lg:gap-6 text-gray-800 dark:text-gray-200 md:font-medium">
+          <!-- Home -->
+          <a href="/home" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'home' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Home</a>
+
+          <!-- Skill Rating -->
+          <% if (user) { %>
+          <a href="/skill" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'skill' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Skill Rating</a>
+          <% } %>
+
+          <!--How it works-->
+          <a href="/working" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'working' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Model Insights</a>
+
+          <!-- Developer -->
+          <a href="/developer" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'developer' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Developer</a>
+
+          <% if (user) { %>
+            <a href="/logout" class="relative pb-1 hover:text-blue-700 dark:hover:text-indigo-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">
+              Logout
+            </a>
+          <% } else { %>
+            <a href="/login" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'login' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full lg:text-base md:text-sm">Login</a>
+          <% } %>
+
+          <!-- Theme Toggle -->
+        </nav>
+
+      <button id="themeToggle" class="rounded-full bg-blue-500 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 flex justify-center items-center hover:bg-blue-600 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white shadow-md transition relative">
+          <i id="sunIcon" class="fa-solid fa-sun text-sm md:text-l lg:text-xl hidden dark:inline-block"></i>
+          <i id="moonIcon" class="fa-solid fa-moon text-sm md:text-l lg:text-xl inline-block dark:hidden"></i>
       </button>
     </div>
-
-    <!-- Navigation -->
-    <nav id="navMenu" class="flex items-center gap-4 lg:gap-6 text-gray-800 dark:text-gray-200 md:font-medium">
-      <!-- Home -->
-      <a href="/home" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'home' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Home</a>
-
-      <!-- Skill Rating -->
-      <% if (user) { %>
-      <a href="/skill" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'skill' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Skill Rating</a>
-      <% } %>
-
-      <!--How it works-->
-       <a href="/working" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'working' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Model Insights</a>
-
-      <!-- Developer -->
-      <a href="/developer" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'developer' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">Developer</a>
-
-      <% if (user) { %>
-        <a href="/logout" class="relative pb-1 hover:text-blue-700 dark:hover:text-indigo-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full md:text-sm lg:text-base">
-          Logout
-        </a>
-      <% } else { %>
-        <a href="/login" class="relative pb-1 transition-colors duration-300 <%= currentPage === 'login' ? 'text-blue-700 dark:text-indigo-400 after:w-full' : 'hover:text-blue-700 dark:hover:text-indigo-400' %> after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-blue-700 dark:after:bg-indigo-400 after:transition-all after:duration-300 after:w-0 hover:after:w-full lg:text-base md:text-sm">Login</a>
-      <% } %>
-
-      <!-- Theme Toggle -->
-      <button id="themeToggle" class="rounded-full bg-blue-500 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 flex justify-center items-center hover:bg-blue-600 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white shadow-md transition relative">
-        <i id="sunIcon" class="fa-solid fa-sun text-sm md:text-l lg:text-xl hidden dark:inline-block"></i>
-        <i id="moonIcon" class="fa-solid fa-moon text-sm md:text-l lg:text-xl inline-block dark:hidden"></i>
-      </button>
-    </nav>
   </div>
 
   <!-- Mobile Menu -->
@@ -104,10 +104,24 @@
 </header>
 
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
 
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const barIcon = document.getElementById('bars');
+    const crossIcon = document.getElementById('cross');
+
+    if (menuToggle && barIcon && crossIcon) {
+      menuToggle.addEventListener('click', () => {
+        // Toggle mobile menu
+        mobileMenu.classList.toggle('hidden');
+        
+        // Toggle icons
+        barIcon.classList.toggle('hidden');
+        crossIcon.classList.toggle('hidden');
+      });
+    } else {
+      console.log('Elements not found:', {menuToggle, barIcon, crossIcon});
+    }
   });
 </script>

@@ -18,11 +18,5 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     );
 
-    // Small spin effect
-    const icon = themeToggle.querySelector("i:not(.hidden)");
-    if (icon) {
-      icon.classList.add("rotate-180");
-      setTimeout(() => icon.classList.remove("rotate-180"), 500);
-    }
   });
 });

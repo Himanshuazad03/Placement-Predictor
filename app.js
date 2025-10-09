@@ -88,14 +88,18 @@ app.post("/skill-predict", isLoggedin, (req, res) => {
 
   const python = spawn("python", ["./skill_predict.py", JSON.stringify(data)]);
   
-  python.stdout.on("data", (output) => {
-    res.send(output.toString().trim());
-  });
-  
+  let output = "";
 
-  python.stderr.on("data", (err) => {
-    console.error(err.toString());
-    res.status(500).send("Error in prediction");
+  python.stdout.on("data", (data) => {
+    output += data.toString(); // collect all stdout chunks
+  });
+
+python.on("close", (code) => {
+    if (code !== 0) {
+      return res.status(500).json({ error: "Python script failed" });
+    }
+    const probability = parseFloat(output.trim());
+    res.json({ probability }); // send exact value to frontend
   });
 
 });
