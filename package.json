@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "dev": "concurrently npm:server npm:build:css",
-    "server": "nodemon app.js",
-    "build:css": "tailwindcss -i ./public/stylesheet/tailwind.css -o ./public/stylesheet/style.css --watch"
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/styles/output.css",
+    "watch:css": "set NODE_OPTIONS=--max-old-space-size=4096 && tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "start": "nodemon app.js",
+    "dev": "concurrently \"npm run watch:css\" \"nodemon app.js\""
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,6 @@
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.1",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^3.4.18"
   }
 }
