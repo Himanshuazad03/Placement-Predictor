@@ -85,6 +85,7 @@ app.post("/predict", isLoggedin, (req, res) => {
 
 app.post("/skill-predict", isLoggedin, (req, res) => {
   const data = req.body;
+  console.log(data)
 
   const python = spawn("python", ["./skill_predict.py", JSON.stringify(data)]);
   

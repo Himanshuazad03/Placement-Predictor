@@ -70,7 +70,7 @@ module.exports.loginUser = async function(req,res){
         res.cookie("token", token, {
       httpOnly: true,
       sameSite: "lax", // ensures it sends with redirect
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      maxAge: 60 * 60 * 1000, // 1 hour
 
   });
         return res.status(201).json({ ok: true });

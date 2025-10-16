@@ -128,7 +128,7 @@
           <p class="text-xl font-bold">Tips:</p>
           <ul id="adviceList" class="list-disc ml-6 mb-6"></ul>
         </div>
-         <a href="/predict" id="predict_btn" class="px-8 hidden py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold rounded-xl shadow-lg dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700">
+         <a href="/predict" id="predict_btn" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold rounded-xl shadow-lg dark:bg-none dark:bg-indigo-600 dark:hover:bg-indigo-700">
             Predict your placement
           </a>
       </div>
@@ -189,6 +189,7 @@
       resultTitle.classList.add("hidden");
       resultText.classList.add("hidden");
       adviceBox.classList.add("hidden");
+      predict_btn.classList.add("hidden")
 
       resultBox.scrollIntoView({ behavior: "smooth" });
 
@@ -213,7 +214,7 @@
       resultText.textContent = `Your Skill Rating: ${result} / 10`;
 
       let advice = [];
-      if (result < 4) {
+      if (result < 5) {
         advice = [
           "Focus on learning high-demand skills like Python, MERN, or Scikit-learn.",
           "Participate in more coding contests to improve problem-solving.",
