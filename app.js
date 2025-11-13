@@ -10,7 +10,7 @@ const isAuthenticated = require('./Middleware/isAuthenticated')
 const cookieParser = require('cookie-parser');
 const isLoggedin = require('./Middleware/isLoggedin')
 const { spawn } = require("child_process");
-const axios = require('axios')
+
 
 require('dotenv').config();
 app.set("view engine", "ejs");
@@ -85,7 +85,6 @@ app.post("/predict", isLoggedin, (req, res) => {
 
 app.post("/skill-predict", isLoggedin, (req, res) => {
   const data = req.body;
-  console.log(data)
 
   const python = spawn("python", ["./skill_predict.py", JSON.stringify(data)]);
   
@@ -147,4 +146,6 @@ app.get("/terms", (req,res)=>{
   res.render("terms", {currentPage: "terms", user: req.user});
 })
 
-app.listen(3000);
+PORT = process.env.PORT || 3000;
+
+app.listen(PORT, ()=> console.log("Server Running"));
