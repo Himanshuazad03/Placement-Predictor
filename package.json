@@ -5,7 +5,7 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./public/styles/output.css",
     "watch:css": "set NODE_OPTIONS=--max-old-space-size=4096 && tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "dev": "concurrently \"npm run watch:css\" \"nodemon app.js\""
   },
   "keywords": [],
