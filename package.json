@@ -16,7 +16,6 @@
     "@tailwindcss/postcss": "^4.1.13",
     "axios": "^1.12.2",
     "bcrypt": "^6.0.0",
-    "config": "^4.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",

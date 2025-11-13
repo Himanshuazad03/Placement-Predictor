@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path')
-const config = require('config')
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const expressSession = require("express-session");
@@ -26,9 +25,10 @@ const userModel = require("./models/user_model");
 
 async function connectDB() {
   try {
-    const mongoURI = config.get("MONGO_URI");
+    const mongoURI = process.env.MONGO_URI;
 
     await mongoose.connect(`${mongoURI}/placement`);
+    console.log("mongodb connected")
   } catch (err) {
     console.error("❌ MongoDB connection failed:", err);
     process.exit(1);
